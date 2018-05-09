@@ -1,0 +1,4 @@
+*.opt
+*.bootinfo
+*.bootinfo_guids
+*.compileinfo
