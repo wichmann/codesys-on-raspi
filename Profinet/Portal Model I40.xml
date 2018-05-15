@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Datentypen für DataItem: Integer8, Integer16, Integer32, Integer64, Unsigned8, Unsigned16, Unsigned32, Unsigned64,
+     Float32, Float64, Date, TimeOfDay with date indication, TimeOfDay without date indication, TimeDifference with date indication,
+     TimeDifference without date indication,NetworkTime, NetworkTimeDifference, VisibleString, OctetString, Float32+Status8,
+     F_MessageTrailer4Byte, F_MessageTrailer5Byte, Unsigned8+Unsigned8, Float32+Unsigned8, Boolean, UnicodeString8, 61131_STRING,
+     61131_WSTRING, TimeStamp, TimeStampDifference, TimeStampDifferenceShort, OctetString2+Unsigned8, Unsigned16_S, Integer16_S,Unsigned8_S, OctetString_S
+-->
+<ISO15745Profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\XSD\GSDML-DeviceProfile-V2.32.xsd" xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile">
+    <ProfileHeader>
+        <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+        <ProfileRevision>1.00</ProfileRevision>
+        <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+        <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+        <ProfileClassID>Device</ProfileClassID>
+        <ISO15745Reference>
+            <ISO15745Part>4</ISO15745Part>
+            <ISO15745Edition>1</ISO15745Edition>
+            <ProfileTechnology>GSDML</ProfileTechnology>
+        </ISO15745Reference>
+    </ProfileHeader>
+    <ProfileBody>
+        <DeviceIdentity VendorID="0x002A" DeviceID="0x10D">
+            <InfoText TextId="Portal-Modell" />
+            <VendorName Value="BBS Brinkstraße" />
+        </DeviceIdentity>
+        <DeviceFunction>
+            <Family MainFamily="PLCs" ProductFamily="CPU 1214C DC/DC/DC" />
+        </DeviceFunction>
+        <ApplicationProcess>
+            <DeviceAccessPointList>
+                <DeviceAccessPointItem ID="DAP1" DNS_CompatibleName="portal" PhysicalSlots="1" FixedInSlots="1" DeviceAccessSupported="true" ModuleIdentNumber="0x33A" ObjectUUID_LocalIndex="100" RequiredSchemaVersion="V2.31" MinDeviceInterval="32" MaxSupportedRecordSize="4068" NameOfStationNotTransferable="false" AddressAssignment="LOCAL" MultipleWriteSupported="true" LLDP_NoD_Supported="true" CheckDeviceID_Allowed="true" ResetToFactoryModes="2" PNIO_Version="V2.32">
+                    <ModuleInfo>
+                        <Name TextId="DAP_Name_ID" />
+                        <InfoText TextId="DAP_Description_ID" />
+                        <OrderNumber Value="6ES7 214-1AG40-0XB0" />
+                        <SoftwareRelease Value="V4.2" />
+                    </ModuleInfo>
+                    <CertificationInfo ConformanceClass="B" ApplicationClass="" NetloadClass="I" />
+                    <!-- Das Datenformat von PROFINET IO besteht aus Geräten mit Slots, Subslots und Kanälen. Jeder
+                         Subslot ist einer Anzahl von I/O-Werten oder Kanälen zugeordnet. Ein Kanal bezieht sich immer
+                         auf einen physikalischen digitalen/analogen Eingang bzw. Ausgang. Ein Gerät kann eine fast
+                         beliebige Anzahl von Slots, Subslots und Kanälen besitzen. Slot 0 ist reserviert!
+                    
+                         Module sind spezifische Funktionen, die mit einem Slot verbunden werden. Jedem Slot muss ein
+                         Modul zugeordnet werden. Es bestimmt die Bedeutung des Slots. Einem Slot mit zwei Bytes kann 
+                         zum Beispiel ein "16 Digitale Eingänge"-Modul zugewiesen werden.
+                    
+                         Quelle: https://www.rtaautomation.com/wp-content/uploads/2014/07/ProfiNet_IO_Overview_R2.pdf -->
+                    <SubslotList>
+                        <SubslotItem SubslotNumber="32768" TextId="Interface_SubslotLabel" />
+                        <SubslotItem SubslotNumber="32769" TextId="Port32769_SubslotLabel" />
+                    </SubslotList>
+                    <!-- Die drei Parameter von IOConfigData beschrieben die maximale Länge der Ausgangs- bzw. Eingangs-
+                         daten in Byte. Diese Längen sind definiert durch die Summe der Eingangsdaten aller verwendeten
+                         Submodule, den entsprechenden IO-Producer-Status und IO-Consumer-Status der verwendeten Submodule. -->
+                    <!--IOConfigData MaxInputLength="200" MaxOutputLength="200" MaxDataLength="400" / -->
+					<IOConfigData MaxInputLength="166" MaxOutputLength="166" MaxDataLength="332" />
+                    <!-- Module können entweder virtuell oder real sein. -->
+                    <VirtualSubmoduleList>
+                        <VirtualSubmoduleItem SubmoduleIdentNumber="0x10000020" FixedInSubslots="1000" ID="VSM_2_1000" Writeable_IM_Records="1 2 3" MayIssueProcessAlarm="false">
+                            <IOData IOPS_Length="1" IOCS_Length="1">
+                                <!-- Portal In -->
+                                <Output>
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalIn_stPanel">
+                                        <BitDataItem BitOffset="0" TextId="ID_xP1"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_xP2"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_xP3"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_xP4"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalIn_stControl">
+                                        <BitDataItem BitOffset="0" TextId="ID_xEnableMotors"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_xOpenGripper"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_xCloseGripper"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalIn_stMove">
+                                        <BitDataItem BitOffset="0" TextId="ID_xStartHoming"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_xStartJog"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_xStartPositXY"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_xStartPositZ"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_xStartPositM1M2"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem DataType="Integer16" TextId="ID_iX" />
+                                    <DataItem DataType="Integer16" TextId="ID_iY" />
+                                    <DataItem DataType="Integer16" TextId="ID_iZ" />
+                                    <DataItem DataType="Integer16" TextId="ID_iM1" />
+                                    <DataItem DataType="Integer16" TextId="ID_iM2" />
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalIn_stJog">
+                                        <BitDataItem BitOffset="0" TextId="ID_enableJog"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_XPos"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_XNeg"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_YPos"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_YNeg"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_ZPos"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_ZNeg"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem Length="15" DataType="OctetString" TextId="ID_Unused" />
+                                </Output>
+                            </IOData>
+                            <ModuleInfo>
+                                <Name TextId="VSM_2_1000_Name" />
+                                <InfoText TextId="VSM_2_1000_Comment" />
+                            </ModuleInfo>
+                        </VirtualSubmoduleItem>
+                        <VirtualSubmoduleItem SubmoduleIdentNumber="0x20000020" FixedInSubslots="1001" ID="VSM_2_1001" MayIssueProcessAlarm="false">
+                            <IOData IOPS_Length="1" IOCS_Length="1">
+                                <!-- PortalOut -->
+                                <Input>
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalOut_stPanel">
+                                        <BitDataItem BitOffset="0" TextId="ID_xS1"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_xS2"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_xS3"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_xS4"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalOut_stControlState">
+                                        <BitDataItem BitOffset="0" TextId="ID_xMotorsEnabled"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_xGripperOpened"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_xGripperClosed"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_PortalOut_stMoveState">
+                                        <BitDataItem BitOffset="0" TextId="ID_xHomingDone"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_xJogRunning"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_xPositXYDone"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_xPositZDone"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_xPositM1M2Done"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem DataType="Integer16" TextId="ID_iX" />
+                                    <DataItem DataType="Integer16" TextId="ID_iY" />
+                                    <DataItem DataType="Integer16" TextId="ID_iZ" />
+                                    <DataItem DataType="Integer16" TextId="ID_iM1" />
+                                    <DataItem DataType="Integer16" TextId="ID_iM2" />
+                                    <DataItem Length="16" DataType="OctetString" TextId="VSM_2_1001" />
+                                </Input>
+                            </IOData>
+                            <ModuleInfo>
+                                <Name TextId="VSM_2_1001_Name" />
+                                <InfoText TextId="VSM_2_1001_Comment" />
+                            </ModuleInfo>
+                        </VirtualSubmoduleItem>
+                        <VirtualSubmoduleItem SubmoduleIdentNumber="0x10000080" FixedInSubslots="1002" ID="VSM_2_1002" MayIssueProcessAlarm="false">
+                            <IOData IOPS_Length="1" IOCS_Length="1">
+                                <!-- RfidIn -->
+                                <Output>
+								<DataItem Length="128" DataType="OctetString" TextId="VSM_2_1002" />
+                                    <!--DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_RfidIn_Control">
+                                        <BitDataItem BitOffset="0" TextId="ID_StartReadRaw"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_StartWriteRaw"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" / -->
+									<!-- Check if 15 should be 16 and 110 should be 112 !-->
+                                    <!--DataItem Length="16" DataType="OctetString" TextId="ID_Unused" />
+                                    <DataItem Length="110" DataType="OctetString" TextId="ID_RfidData" / -->
+                                </Output>
+                            </IOData>
+                            <ModuleInfo>
+                                <Name TextId="VSM_2_1002_Name" />
+                                <InfoText TextId="VSM_2_1002_Comment" />
+                            </ModuleInfo>
+                        </VirtualSubmoduleItem>
+                        <VirtualSubmoduleItem SubmoduleIdentNumber="0x20000080" FixedInSubslots="1003" ID="VSM_2_1003" MayIssueProcessAlarm="false">
+                            <IOData IOPS_Length="1" IOCS_Length="1">
+                                <!-- RfidOut -->
+                                <Input>
+								<DataItem Length="128" DataType="OctetString" TextId="VSM_2_1003" />
+                                    <!--DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_RfidOut_Control">
+                                        <BitDataItem BitOffset="0" TextId="ID_TagPresent"/>
+                                        <BitDataItem BitOffset="1" TextId="ID_RfidDone"/>
+                                        <BitDataItem BitOffset="2" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="3" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="4" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="5" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="6" TextId="ID_Unused"/>
+                                        <BitDataItem BitOffset="7" TextId="ID_Unused"/>
+                                    </DataItem>
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+                                    <DataItem Length="16" DataType="OctetString" TextId="ID_Unused" />
+                                    <DataItem Length="110" DataType="OctetString" TextId="ID_RfidData" /-->
+                                </Input>
+                            </IOData>
+                            <ModuleInfo>
+                                <Name TextId="VSM_2_1003_Name" />
+                                <InfoText TextId="VSM_2_1003_Comment" />
+                            </ModuleInfo>
+                        </VirtualSubmoduleItem>
+                    </VirtualSubmoduleList>
+                    <SystemDefinedSubmoduleList>
+                        <InterfaceSubmoduleItem ID="Interface" SubslotNumber="32768" SubmoduleIdentNumber="0xf00" TextId="Interface" NetworkComponentDiagnosisSupported="true" ParameterizationDisallowed="false" SupportedMibs="MIB2" SupportedProtocols="SNMP;LLDP" PTP_BoundarySupported="true" DCP_BoundarySupported="true" SupportedRT_Classes="RT_CLASS_1">
+                            <ApplicationRelations StartupMode="Advanced;Legacy" NumberOfAR="1">
+                                <TimingProperties PreferredSendClock="32" SendClock="32" ReductionRatioNonPow2="1" ReductionRatioPow2="1 2 4 8 16 32 64 128 256 512" />
+                            </ApplicationRelations>
+                        </InterfaceSubmoduleItem>
+                        <PortSubmoduleItem ID="Port_1" TextId="Port_1" SubslotNumber="32769" SubmoduleIdentNumber="0xf01" ParameterizationDisallowed="false" LinkStateDiagnosisCapability="Up+Down" MAUTypes="16" PortDeactivationSupported="false" CheckMAUTypeSupported="true" SupportsRingportConfig="true" IsDefaultRingport="true" CheckMAUTypeDifferenceSupported="true">
+                            <MAUTypeList>
+                                <MAUTypeItem Value="16" AdjustSupported="true" />
+                            </MAUTypeList>
+                        </PortSubmoduleItem>
+                    </SystemDefinedSubmoduleList>
+                </DeviceAccessPointItem>
+            </DeviceAccessPointList>
+            <ExternalTextList>
+                <PrimaryLanguage>
+                    <Text TextId="EmptyString" Value="" />
+                    <Text TextId="Interface_SubslotLabel" Value="X1" />
+                    <Text TextId="Port32769_SubslotLabel" Value="Port1" />
+                    <Text TextId="DAP_Name_ID" Value="Portal" />
+                    <Text TextId="DAP_Description_ID" Value="Arbeitsspeicher 100KB; DC24V Stromversorgung mit DI14 x DC24V SINK/SOURCE, DQ10 x DC24V und AI2 on-board; 6 schnelle Zähler und 4 Pulsausgänge on-board; Signalboard erweitert on-board-I/O; bis zu 3 Kommunikationsmodule für serielle Kommunikation; bis zu 8 Signalmodule für I/O-Erweiterung; 0,04ms/kAW; PROFINET-Schnittstelle für Programmierung, HMI und PLC-PLC-Kommunikation" />
+                    <Text TextId="Interface" Value="Interface" />
+                    <Text TextId="Port_1" Value="Port 1" />
+                    <Text TextId="VSM_2_1000_Name" Value="PortalIn" />
+                    <Text TextId="VSM_2_1000_Comment" Value="Eingänge der Portalsteuerung" />
+                    <Text TextId="VSM_2_1000" Value="PortalIn" />
+                    <Text TextId="VSM_2_1001_Name" Value="PortalOut" />
+                    <Text TextId="VSM_2_1001_Comment" Value="Ausgänge der Portalsteuerung" />
+                    <Text TextId="VSM_2_1001" Value="PortalOut" />
+                    <Text TextId="VSM_2_1002_Name" Value="RfidIn" />
+                    <Text TextId="VSM_2_1002_Comment" Value="Schreiben von RFID" />
+                    <Text TextId="VSM_2_1002" Value="RfidIn" />
+                    <Text TextId="VSM_2_1003_Name" Value="RfidOut" />
+                    <Text TextId="VSM_2_1003_Comment" Value="Lesen von RFID" />
+                    <Text TextId="VSM_2_1003" Value="RfidOut" />
+                    <!-- Allgemeine Texte -->
+                    <Text TextId="ID_Reserved" Value="Reserviert" />
+                    <Text TextId="ID_Unused" Value="Unbenutzt" />
+                    <!-- PortalIn -->
+                    <Text TextId="ID_PortalIn_stPanel" Value="Portal In Panel" />
+                    <Text TextId="ID_PortalIn_stControl" Value="Portal In Control" />
+                    <Text TextId="ID_PortalIn_stMove" Value="Portal In Move" />
+                    <Text TextId="ID_PortalIn_stJog" Value="Portal In Jog" />
+                    <!-- portalIn_stPanel -->
+                    <Text TextId="ID_xP1" Value="LED Start" />
+                    <Text TextId="ID_xP2" Value="LED Reset" />
+                    <Text TextId="ID_xP3" Value="LED Q1" />
+                    <Text TextId="ID_xP4" Value="LED Q2" />
+                    <!-- portalIn_stControl -->
+                    <Text TextId="ID_xEnableMotors" Value="Motoren einschalten" />
+                    <Text TextId="ID_xOpenGripper" Value="Greifer öffnen" />
+                    <Text TextId="ID_xCloseGripper" Value="Greifer schließen" />
+                    <!-- portalIn_stMove -->
+                    <Text TextId="ID_xStartHoming" Value="Referenzfahrt starten" />
+                    <Text TextId="ID_xStartJog" Value="Jog starten" />
+                    <Text TextId="ID_xStartPositXY" Value="Positionierung XY starten" />
+                    <Text TextId="ID_xStartPositZ" Value="Positionierung Z starten" />
+                    <Text TextId="ID_xStartPositM1M2" Value="Positionierung M1M2 starten" />
+                    <!-- portalIn_stPosition -->
+                    <Text TextId="ID_iX" Value="Position X (0,1 mm)" />
+                    <Text TextId="ID_iY" Value="Position Y (0,1 mm)" />
+                    <Text TextId="ID_iZ" Value="Position Z (0,1 mm)" />
+                    <Text TextId="ID_iM1" Value="Position M1 (0,1 mm)" />
+                    <Text TextId="ID_iM2" Value="Position M2 (0,1 mm)" />
+                    <!-- portalIn_stJog -->
+                    <Text TextId="ID_enableJog" Value="Jog einschalten" />
+                    <Text TextId="ID_XPos" Value="XPos" />
+                    <Text TextId="ID_XNeg" Value="XNeg" />
+                    <Text TextId="ID_YPos" Value="YPos" />
+                    <Text TextId="ID_YNeg" Value="YNeg" />
+                    <Text TextId="ID_ZPos" Value="ZPos" />
+                    <Text TextId="ID_ZNeg" Value="ZNeg" />
+                    <!-- PortalOut -->
+                    <Text TextId="ID_PortalOut_stPanel" Value="Portal Out Panel" />
+                    <Text TextId="ID_PortalOut_stControlState" Value="Portal Out Control State" />
+                    <Text TextId="ID_PortalOut_stMoveState" Value="Portal Out Move State" />
+                    <Text TextId="" Value="" />
+                    <!-- portalOut_stPanel -->
+                    <Text TextId="ID_xS1" Value="Button Start" />
+                    <Text TextId="ID_xS2" Value="Button Stop" />
+                    <Text TextId="ID_xS3" Value="Switch 0=Auto/1=Manuell" />
+                    <Text TextId="ID_xS4" Value="Button Reset" />
+                    <!-- portalOut_stControlState -->
+                    <Text TextId="ID_xMotorsEnabled" Value="Motoren eingeschaltet" />
+                    <Text TextId="ID_xGripperOpened" Value="Greifer offen" />
+                    <Text TextId="ID_xGripperClosed" Value="Greifer geschlossen" />
+                    <!-- portalIn_stMoveState -->
+                    <Text TextId="ID_xHomingDone" Value="Referenzfahrt fertig" />
+                    <Text TextId="ID_xJogRunning" Value="Jog läuft" />
+                    <Text TextId="ID_xPositXYDone" Value="Positionierung XY fertig" />
+                    <Text TextId="ID_xPositZDone" Value="Positionierung Z fertig" />
+                    <Text TextId="ID_xPositM1M2Done" Value="Positionierung M1M2 fertig" />
+                    <!-- RfidIn -->
+                    <Text TextId="ID_RfidIn_Control" Value="Rfid In Control" />
+                    <Text TextId="ID_StartReadRaw" Value="Lesen starten" />
+                    <Text TextId="ID_StartWriteRaw" Value="Schreiben starten" />
+                    <Text TextId="ID_RfidData" Value="RFID-Daten" />
+                    <!-- RfidOut -->
+                    <Text TextId="ID_RfidOut_Control" Value="Rfid Out Control" />
+                    <Text TextId="ID_TagPresent" Value="Tag vorhanden" />
+                    <Text TextId="ID_RfidDone" Value="RFID fertig" />
+                </PrimaryLanguage>
+            </ExternalTextList>
+        </ApplicationProcess>
+    </ProfileBody>
+</ISO15745Profile>
