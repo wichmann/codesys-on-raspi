@@ -171,8 +171,7 @@
                             <IOData IOPS_Length="1" IOCS_Length="1">
                                 <!-- RfidIn -->
                                 <Output>
-								<DataItem Length="128" DataType="OctetString" TextId="VSM_2_1002" />
-                                    <!--DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_RfidIn_Control">
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_RfidIn_Control">
                                         <BitDataItem BitOffset="0" TextId="ID_StartReadRaw"/>
                                         <BitDataItem BitOffset="1" TextId="ID_StartWriteRaw"/>
                                         <BitDataItem BitOffset="2" TextId="ID_Unused"/>
@@ -182,7 +181,8 @@
                                         <BitDataItem BitOffset="6" TextId="ID_Unused"/>
                                         <BitDataItem BitOffset="7" TextId="ID_Unused"/>
                                     </DataItem>
-                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" / -->
+                                    <DataItem DataType="Unsigned8" TextId="ID_Unused" />
+									<DataItem Length="126" DataType="OctetString" TextId="VSM_2_1002" />
 									<!-- Check if 15 should be 16 and 110 should be 112 !-->
                                     <!--DataItem Length="16" DataType="OctetString" TextId="ID_Unused" />
                                     <DataItem Length="110" DataType="OctetString" TextId="ID_RfidData" / -->
@@ -197,8 +197,7 @@
                             <IOData IOPS_Length="1" IOCS_Length="1">
                                 <!-- RfidOut -->
                                 <Input>
-								<DataItem Length="128" DataType="OctetString" TextId="VSM_2_1003" />
-                                    <!--DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_RfidOut_Control">
+                                    <DataItem DataType="Unsigned8" UseAsBits="true" TextId="ID_RfidOut_Control">
                                         <BitDataItem BitOffset="0" TextId="ID_TagPresent"/>
                                         <BitDataItem BitOffset="1" TextId="ID_RfidDone"/>
                                         <BitDataItem BitOffset="2" TextId="ID_Unused"/>
@@ -209,7 +208,8 @@
                                         <BitDataItem BitOffset="7" TextId="ID_Unused"/>
                                     </DataItem>
                                     <DataItem DataType="Unsigned8" TextId="ID_Unused" />
-                                    <DataItem Length="16" DataType="OctetString" TextId="ID_Unused" />
+									<DataItem Length="126" DataType="OctetString" TextId="VSM_2_1003" />
+                                    <!--DataItem Length="16" DataType="OctetString" TextId="ID_Unused" />
                                     <DataItem Length="110" DataType="OctetString" TextId="ID_RfidData" /-->
                                 </Input>
                             </IOData>
